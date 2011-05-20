@@ -1,32 +1,32 @@
 /**
-  * jQuery hux fittext
-  * 
-  * Create a resizible text.
-  * 
+  * jQuery hux rtext 
+  *
+  * Create a resizible text when the window is resized.
+  *
   * @author Neftali Bautista
   * @VERSION 0.0.1
   **/
 (function($, undefined){
-  $.widget("hux.fittext", {
-    'options' : {
-      'compressor'    : 1, // set the compressor
-      'origFontSize'  : null // init the font sizes this could be inited by css attr
+  $.widget("hux.rtext", {
+    "options" : {
+      "compress"    : 1, // set the compress
+      "origfontsize"  : null // init the font sizes this could be inited by css attr
     },
-    '_init' : function(){
+    "_init" : function(){
       var that = this,
           options = that.options,
           ele = that.element,
-          origFontSize = parseFloat(ele.css('font-size'));   // init the font sizes
+          origfontsize = parseFloat(ele.css('font-size'));   // init the font sizes
       that._resize(); // Call once to set.
-      $(window).resize(that._resize); // Call on resize. Opera debounces their resize by default.
+      $(window).resize(that._resize); // Adding to the resize action.
     },
-    '_resize' : function(){
+    "_resize" : function(){
       var that = this,
           options = that.options,
-          compressor = options.compressor,
-          origFontSize = options.origFontSize,
+          compress = options.compress,
+          origfontsize = options.origfontsize,
           ele = that.element;
-      ele.css('font-size', Math.min(ele.width() / (compressor * 10), origFontSize));
+      ele.css("font-size", Math.min(ele.width() / (compress * 10), origfontsize));
     }
   });
 })(jQuery);
